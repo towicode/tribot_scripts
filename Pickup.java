@@ -40,7 +40,7 @@ public class Pickup {
     while (Inventory.getAll().length <= 25) {
       RSGroundItem[] fish = GroundItems.findNearest(fisha);
 
-      if (fish == null || fish.length < 1) {
+      if (fish.length < 1) {
         General.sleep(300, 400);
         RSTile hover_tile = getPopulatedTile();
         Camera.turnToTile(hover_tile);

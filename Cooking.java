@@ -45,7 +45,7 @@ public class Cooking {
 
     RSItem[] fish = Inventory.find(Filters.Items.nameContains("Raw "));
 
-    if (fish == null | fish.length < 1)
+    if (fish.length < 1)
       return;
 
     RSItem closest_fish = fish[0];
@@ -55,7 +55,7 @@ public class Cooking {
     }
 
     RSObject[] fire = Objects.getAll(7, Filters.Objects.nameContains("Fire"));
-    if (fire == null || fire.length < 1)
+    if (fire.length < 1)
       return;
 
     RSObject closest_fire = fire[0];
@@ -97,7 +97,7 @@ public class Cooking {
 
     if (Timing.waitCondition(Cooking, 2000)) {
       while (Player.getAnimation() > 0 || secondCheck()) {
-        General.sleep(1000, 2000);
+        General.sleep(300, 400);
       }
     }
   }

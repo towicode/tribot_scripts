@@ -48,7 +48,7 @@ public class Firemaking {
 
       RSItem wood[] = Inventory.find(Filters.Items.nameEquals("Logs"));
 
-      if (wood == null || wood.length < 1) {
+      if (wood.length < 1) {
         General.println("Wood Chopping failed");
         return false;
       }
@@ -56,7 +56,7 @@ public class Firemaking {
       RSItem tinderboxes[] = Inventory
           .find(Filters.Items.nameEquals("TinderBox"));
 
-      if (tinderboxes == null || tinderboxes.length < 1) {
+      if (tinderboxes.length < 1) {
         General.println("This script requires a tinderbox dumbass");
         return false;
       }
@@ -79,19 +79,16 @@ public class Firemaking {
           break;
       }
 
-      if (Timing.waitCondition(new Condition() {
-
+      if (Timing.waitCondition(new Condition() { // TODO move this up
         @Override
         public boolean active() {
           General.sleep(200, 400);
           return isFireGoing();
         }
-
       }, 2400))
 
         if (checkFire())
           return true;
-
     }
     return false;
 
@@ -111,16 +108,14 @@ public class Firemaking {
   private static boolean lightingFire() {
 
     RSPlayer[] fireMakers = Players.getAll(makingFire);
-    return (fireMakers != null && fireMakers.length > 0);
+    return (fireMakers.length > 0);
   }
 
   public static boolean isFireGoing() {
 
     RSObject[] fire = Objects.getAll(7, Filters.Objects.nameContains("Fire"));
-
-    return (fire != null && fire.length > 0);
+    return (fire.length > 0);
 
   }
-
 
 }

@@ -19,8 +19,11 @@ public class LazyCooker extends EnumScript<States>implements Painting {
 
   String[] needed = { "Tinderbox", "Bronze axe" };
   long start_time;
+  final Rectangle PAINT_RECT = new Rectangle(7, 345, 510, 129);
+  final Rectangle SKILL_RECT = new Rectangle(17, 395, 440, 25);
 
   private States getState() {
+    General.sleep(60, 70);
     if (Inventory.getAll().length >= 25) {
       if (Inventory.getCount("Raw trout")
           + (Inventory.getCount("Raw salmon")) > 0)
@@ -64,15 +67,13 @@ public class LazyCooker extends EnumScript<States>implements Painting {
 
   @Override
   public void onPaint(Graphics g) {
-    final Rectangle PAINT_RECT = new Rectangle(7, 345, 510, 129);
-    final Rectangle SKILL_RECT = new Rectangle(17,395, 440, 25);
+
     long passed_time = Timing.currentTimeMillis() - start_time;
     String time = Timing.msToString(passed_time);
     double percent = Skills.getPercentToNextLevel(SKILLS.COOKING);
-    percent = percent/100;
+    percent = percent / 100;
     double width = SKILL_RECT.width * percent;
     int int_width = (int) width;
-    
 
     g.setColor(Color.BLACK);
     g.fillRect(PAINT_RECT.x, PAINT_RECT.y, PAINT_RECT.width, PAINT_RECT.height);

@@ -43,7 +43,7 @@ public class Woodcutting {
     if (Firemaking.checkFire())
       return true;
 
-    if (trees == null || trees.length < 1) {
+    if (trees.length < 1) {
       General.println(
           "We didn't find the tree, so we're gonna try to walk towards one");
       Walking.walkToTree();
