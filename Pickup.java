@@ -73,7 +73,8 @@ public class Pickup {
       }
 
       nearest_fish.click("Take" + " Raw");
-      General.sleep(150, 350);
+      int sleep_time = General.randomSD(107, 298, 204, 16);
+      General.sleep(sleep_time);
 
     }
   }

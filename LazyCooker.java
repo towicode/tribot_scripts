@@ -10,8 +10,10 @@ import org.tribot.api.input.Mouse;
 import org.tribot.api2007.ChooseOption;
 import org.tribot.api2007.Game;
 import org.tribot.api2007.Inventory;
+import org.tribot.api2007.Player;
 import org.tribot.api2007.Skills;
 import org.tribot.api2007.Skills.SKILLS;
+import org.tribot.api2007.types.RSPlayer;
 import org.tribot.script.EnumScript;
 import org.tribot.script.interfaces.Painting;
 
@@ -21,6 +23,8 @@ public class LazyCooker extends EnumScript<States>implements Painting {
   long start_time;
   final Rectangle PAINT_RECT = new Rectangle(7, 345, 510, 129);
   final Rectangle SKILL_RECT = new Rectangle(17, 395, 440, 25);
+
+  public static long reaction_time;
 
   private States getState() {
     General.sleep(60, 70);
@@ -41,6 +45,21 @@ public class LazyCooker extends EnumScript<States>implements Painting {
   public States getInitialState() {
 
     println("hi");
+    String player_name = null;
+    RSPlayer player = Player.getRSPlayer();
+
+    if (player != null)
+      player_name = player.getName();
+
+    if (player_name == null) {
+      General.println(
+          "we couldnt get the players username so please restart the script.");
+
+    }
+
+    Seed.setSeed(player_name);
+   
+
     start_time = Timing.currentTimeMillis();
     return getState();
   }
