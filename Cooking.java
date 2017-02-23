@@ -50,10 +50,6 @@ public class Cooking {
 
     RSItem closest_fish = fish[0];
 
-    if (!Firemaking.isFireGoing()) {
-      Firemaking.makeFire();
-    }
-
     RSObject[] fire = Objects.getAll(7, Filters.Objects.nameContains("Fire"));
     if (fire.length < 1)
       return;
@@ -88,9 +84,6 @@ public class Cooking {
 
     RSInterfaceChild cooking = Interfaces.get(COOKING_INTERFACE, 3);
     if (cooking == null)
-      return;
-
-    if (!Firemaking.isFireGoing())
       return;
 
     cooking.click("Cook All");

@@ -15,14 +15,6 @@ public class Walking {
     org.tribot.api2007.Walking.walkScreenPath(path);
   }
 
-  public static void walkToTree() {
-    RSTile[] path = org.tribot.api2007.Walking
-        .generateStraightScreenPath(PTILE1);
-    if (path == null || path.length == 0)
-      return;
-    org.tribot.api2007.Walking.walkScreenPath(path);
-  }
-
   public static void walk(RSTile position) {
     RSTile[] path = org.tribot.api2007.Walking
         .generateStraightScreenPath(position.getPosition());
